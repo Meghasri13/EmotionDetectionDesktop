@@ -1,1 +1,1 @@
-# EmotionDetectionDesktop
+# Emotion Detection System using Facial Expressions
