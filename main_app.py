@@ -7,7 +7,7 @@ import sqlite3
 import cv2
 from deepface import DeepFace
 import matplotlib.pyplot as plt
-import time
+import time 
 
 # Create or connect to database
 def create_database():
@@ -102,20 +102,24 @@ class EmotionApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Emotion Detection App")
+        self.root.geometry("700x600")
+        self.root.configure(bg='lightblue')  # Light blue background
 
-        self.name_label = tk.Label(root, text="Enter Your Name:")
-        self.name_label.pack()
+        self.name_label = tk.Label(root, text="Enter Your Name:", bg='lightblue', font=("Arial", 14))
+        self.name_label.pack(pady=10)
 
-        self.name_entry = tk.Entry(root)
+        self.name_entry = tk.Entry(root, font=("Arial", 12))
         self.name_entry.pack(pady=5)
 
-        tk.Button(root, text="Start Detection", command=self.start_detection).pack(pady=5)
-        tk.Button(root, text="Show Database", command=self.show_database).pack(pady=5)
-        tk.Button(root, text="Show Charts", command=plot_emotions).pack(pady=5)
-        tk.Button(root, text="Clear Data", command=clear_database).pack(pady=5)
+        tk.Button(root, text="Start Detection", command=self.start_detection, width=20, font=("Arial", 12)).pack(pady=8)
+        tk.Button(root, text="Show Database", command=self.show_database, width=20, font=("Arial", 12)).pack(pady=8)
+        tk.Button(root, text="Show Charts", command=plot_emotions, width=20, font=("Arial", 12)).pack(pady=8)
+        tk.Button(root, text="Clear Data", command=clear_database, width=20, font=("Arial", 12)).pack(pady=8)
 
-        self.output = tk.Text(root, height=10, width=60)
-        self.output.pack()
+        self.output = tk.Text(root, height=12, width=80, font=("Arial", 10))
+        self.output.pack(pady=10)
+
+        
 
     def start_detection(self):
         name = self.name_entry.get()
